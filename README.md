@@ -26,17 +26,14 @@ CREATE TABLE [dbo].[Customers]( <br />
 	[CustomerID] ASC <br />
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] <br />
 ) ON [PRIMARY] <br />
-
 GO <br />
 
 SET ANSI_PADDING ON <br />
 GO <br />
 
 
-
 ----truncate <br />
 truncate table Customers <br />
-
 ---SQL loop insert <br />
 DECLARE @ID int; <br />
 SET @ID=0; <br />
@@ -45,4 +42,5 @@ BEGIN <br />
 	insert into Customers values('Name ' + CAST(@ID AS VARCHAR),'email01@gmail.com',1240,'Country ' + CAST(@ID AS VARCHAR),'City ' + CAST(@ID AS VARCHAR)) <br />
 	SET @ID = @ID + 1; <br />
 END <br />
+
 
