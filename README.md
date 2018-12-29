@@ -1,5 +1,6 @@
 # LOOP IN SQL with MSSQL data insert example.
 
+```SQL
 USE [DevTest] <br />
 GO
 
@@ -42,10 +43,10 @@ BEGIN <br />
 	insert into Customers values('Name ' + CAST(@ID AS VARCHAR),'email01@gmail.com',1240,'Country ' + CAST(@ID AS VARCHAR),'City ' + CAST(@ID AS VARCHAR)) <br />
 	SET @ID = @ID + 1; <br />
 END <br />
-
+```
 
 ## Option-2 Bulck data insert for R&D
-
+```SQL
 #### Table script <br />
 USE [DevTest] <br />
 GO <br />
@@ -72,8 +73,10 @@ CREATE TABLE [dbo].[PersonalInfo]( <br />
 ) ON [PRIMARY] <br />
 
 GO <br />
+```
 
 #### Bulck data insertion
+```SQL
 ----truncate <br />
 truncate table PersonalInfo <br />
 ---SQL loop insert <br />
@@ -87,7 +90,19 @@ ABS(CAST(NEWID() AS binary(12)) % 1000) + 999999999,'email' + CAST(@ID AS nvarch
 SET @ID = @ID + 1; <br />
 set @StartDate=dateadd(day,1, @StartDate) <br />
 END  <br />
+```
 
+
+### Select Table Row
+```SQL
+select ROW_NUMBER() over (order by ID ) as RN from CompanyList
+```
+
+### Add New Column as IDENTITY
+```SQL
+ALTER TABLE CompanyList ADD ID INT IDENTITY(1,1) 
+GO 
+```
 
 
 
